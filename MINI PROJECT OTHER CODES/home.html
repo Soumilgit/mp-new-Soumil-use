@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>home</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+      
+      <img src="images/logo.png" class="ABC" alt="" style="height: 67px; width: 170px;">
+
+      <form action="search.html" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="Search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-1.jpg" class="image" alt="">
+         <h3 class="name">Himanshu Garg</h3>
+         <p class="role">Student</p>
+         <a href="profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">login</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="images/pic-1.jpg" class="image" alt="">
+      <h3 class="name">Himanshu Garg</h3>
+      <p class="role">Student</p>
+      <a href="profile.html" class="btn">view profile</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="assignment.html"><i class="fas fa-book"></i><span>Assignments</span></a>
+      <a href="result.html"><i class="fas fa-percentage"></i><span>Result Analysis</span></a>
+   </nav>
+
+</div>
+
+
+
+
+<section class="courses">
+
+   <h1 class="heading">our courses</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/aoa.png" alt="" style="height: 200px;">
+         </div>
+         <h3 class="title">Analysis of Algorithms</h3>
+         <a href="courses.html" class="inline-btn">view course</a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/rdbms.png" alt="" style="height: 200px">
+         </div>
+         <h3 class="title">Relational Database Management System</h3>
+         <a href="playlist.html" class="inline-btn">view course</a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/tacd.png" alt="">
+         </div>
+         <h3 class="title">Theory of Automata and Compiler Design</h3>
+         <a href="playlist.html" class="inline-btn">view course</a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/psot images.png" alt="">
+         </div>
+         <h3 class="title">Probability, Statistics and Optimization Techniques</h3>
+         <a href="playlist.html" class="inline-btn">view course</a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/cyber.png" alt="">
+         </div>
+         <h3 class="title">Cyber Forensics Security and Cyber Law</h3>
+         <a href="playlist.html" class="inline-btn">view course</a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/ads (1).png" alt="">
+         </div>
+         <h3 class="title">Data Science and Analysis</h3>
+         <a href="playlist.html" class="inline-btn">view course</a>
+      </div>
+
+   </div>
+
+   <div class="more-btn">
+      <a href="courses.html" class="inline-option-btn">view all courses</a>
+   </div>
+
+</section><br>
+
+<section class="home-grid">
+
+   <h1 class="heading">quick options</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <h3 class="title">Notifications: </h3>
+         <p class="likes">PSOT: Tut 5 Correlation and Regression is overdue!</p>
+         <p class="likes">RDBMS: Exp 4. is due (when: 10-4-2024 11.59pm)</p>
+         <p class="likes">AOA: Exp3. is due (when: 15-4-2024 11.59pm)</p>
+      </div>
+
+     
+
+      <div class="box">
+         <h3 class="title">Current Courses Offered</h3>
+         <div class="flex">
+            <a href="#"><span>AOA</span></a>
+            <a href="#"><span>TACD</span></a>
+            <a href="#"><span>RDBMS</span></a>
+            <a href="#"><span>PSOT</span></a>
+            <a href="#"><span>WPL</span></a>
+            <a href="#"><span>ADS</span></a>
+         </div>
+      </div>
+
+      <div class="box">
+         <h3 class="title">View Courses</h3>
+         <p class="tutor">Login to view your current sem courses</p>
+         <a href="login.html" class="inline-btn">Login</a>
+      </div>
+
+   </div>
+
+</section>
+
+
+<footer class="footer">
+
+   @ 2024  All Rights Reserved
+
+</footer>
+
+<!-- custom js file link  -->
+<script src="script.js"></script>
+
+   
+</body>
+</html>

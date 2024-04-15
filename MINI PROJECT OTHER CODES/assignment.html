@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+   
+    <section class="flex">
+       
+       <img src="images/logo.png" class="ABC" alt="" style="height: 67px; width: 170px;">
+ 
+       <form action="search.html" method="post" class="search-form">
+          <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+          <button type="submit" class="fas fa-search"></button>
+       </form>
+ 
+       <div class="icons">
+          <div id="menu-btn" class="fas fa-bars"></div>
+          <div id="search-btn" class="fas fa-search"></div>
+          <div id="user-btn" class="fas fa-user"></div>
+          <div id="toggle-btn" class="fas fa-sun"></div>
+       </div>
+ 
+       <div class="profile">
+          <img src="images/pic-1.jpg" class="image" alt="">
+          <h3 class="name">Himanshu Garg</h3>
+          <p class="role">Student</p>
+          <a href="profile.html" class="btn">view profile</a>
+          <div class="flex-btn">
+             <a href="login.html" class="option-btn">login</a>
+          </div>
+       </div>
+ 
+    </section>
+ 
+ </header>   
+ 
+ <div class="side-bar">
+ 
+    <div id="close-btn">
+       <i class="fas fa-times"></i>
+    </div>
+ 
+    <div class="profile">
+       <img src="images/pic-1.jpg" class="image" alt="">
+       <h3 class="name">Himanshu Garg</h3>
+       <p class="role">Student</p>
+       <a href="profile.html" class="btn">view profile</a>
+    </div>
+ 
+    <nav class="navbar">
+       <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+       <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+       <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+       <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+       <a href="assignment.html"><i class="fas fa-book"></i><span>Assignments</span></a>
+       <a href="result.html"><i class="fas fa-percentage"></i><span>Result Analysis</span></a>
+    </nav>
+ 
+ </div>
+
+  <section id="coursesSection">
+    <h1 style="font-size: 25px;">Courses</h1>
+    <ul id="coursesList" style="font-size: 20px;"></ul>
+    <button type="button" onclick="addCourse()" style="font-size: 20px;">Add Course</button>
+  </section>
+
+  <section id="assignmentsSection">
+    <h2 class="brand" style="font-size: 25px;">Assignments</h2>
+    <ul id="assignmentsList" class="assignments" style="font-size: 20px;"></ul>
+    <div id="submissionForm" class="submission-form" style="display: none;">
+      <h3 id="formTitle" style="font-size: 20px;">Submit Assignment</h3>
+      <form id="assignmentForm">
+        <div>
+        <label for="courseSelect" style="font-size: 20px;">Select Course:  </label>
+        <select id="courseSelect" name="courseSelect" required style="font-size: 15px;"></select>
+        </div>
+
+        <div>
+        <label for="assignmentTitle" style="font-size: 20px;">  Title:  </label>
+        <input type="text" id="assignmentTitle" name="assignmentTitle" required style="font-size: 15px;">
+        </div>
+
+        <div>
+        <label for="submissionType" style="font-size: 20px;">Submission Type:</label>
+        <select id="submissionType" name="submissionType" required style="font-size: 15px;">
+          <option value="document" style="font-size: 15px;">Document</option>
+          <option value="pdf" style="font-size: 15px;">PDF</option>
+        </select>
+        </div>
+
+        <div>
+        <label for="dueDate" style="font-size: 20px;">Due Date:</label>
+        <input type="datetime-local" id="dueDate" name="dueDate" required>
+        </div>
+
+        <label for="assignmentFile" style="font-size: 20px;">File:</label>
+        <input type="file" id="assignmentFile" name="assignmentFile" accept=".pdf, .docx" required>
+
+        <div>
+        <button type="button" id="submitBtn" onclick="submitAssignment()" style="font-size: 20px;">Submit Assignment</button>
+        <button type="button" id="updateBtn" onclick="updateAssignment()" style="display: none;" style="font-size: 20px;">Update Assignment</button>
+        </div>
+      </form>
+    </div>
+    <button type="button" onclick="addAssignment()" style="font-size: 20px;">  Add Assignment</button>
+  </section>
+  
+
+  <script>
+    let currentUser = 'Student';
+    let currentRole = 'student'; // Assuming a student is logged in
+    let selectedAssignment;
+
+    const courses = [
+      { id: 1, name: 'Course 1' },
+      { id: 2, name: 'Course 2' },
+    ];
+
+    const assignments = [
+      { courseId: 1, title: 'Assignment 1', createdBy: 'Teacher1', submissionType: 'document', dueDate: '2024-03-15T23:59' },
+      { courseId: 2, title: 'Assignment 2', createdBy: 'Teacher2', submissionType: 'pdf', dueDate: '2024-03-20T23:59' },
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showCourses();
+    });
+
+    function showCourses() {
+      const coursesList = document.getElementById('coursesList');
+      coursesList.innerHTML = '';
+
+      courses.forEach(course => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${course.name}</strong>`;
+        li.addEventListener('click', () => showAssignments(course.id));
+        coursesList.appendChild(li);
+      });
+
+      showAssignments(courses[0].id); // Show assignments for the first course by default
+    }
+
+    function showAssignments(courseId) {
+      const courseAssignments = assignments.filter(assignment => assignment.courseId === courseId);
+
+      const assignmentsList = document.getElementById('assignmentsList');
+      assignmentsList.innerHTML = '';
+
+      courseAssignments.forEach(assignment => {
+        const li = document.createElement('li');
+        li.className = 'assignment';
+        li.innerHTML = `<strong>${assignment.title}</strong> - Created by: ${assignment.createdBy}`;
+        li.addEventListener('click', () => openSubmissionForm(assignment));
+        assignmentsList.appendChild(li);
+      });
+
+      const courseSelect = document.getElementById('courseSelect');
+      courseSelect.innerHTML = '';
+      courses.forEach(course => {
+        const option = document.createElement('option');
+        option.value = course.id;
+        option.textContent = course.name;
+        courseSelect.appendChild(option);
+      });
+
+      if (currentRole === 'student') {
+        document.getElementById('submissionForm').style.display = 'block';
+      } else {
+        document.getElementById('submissionForm').style.display = 'none';
+      }
+    }
+
+    function openSubmissionForm(assignment) {
+      selectedAssignment = assignment;
+      document.getElementById('assignmentTitle').value = assignment.title;
+      document.getElementById('submissionType').value = assignment.submissionType;
+      document.getElementById('dueDate').value = assignment.dueDate;
+      document.getElementById('courseSelect').value = assignment.courseId;
+      document.getElementById('formTitle').innerText = 'Edit Assignment';
+      document.getElementById('submitBtn').style.display = 'none';
+      document.getElementById('updateBtn').style.display = 'block';
+      document.getElementById('submissionForm').style.display = 'block';
+    }
+
+    function submitAssignment() {
+      const submittedTitle = document.getElementById('assignmentTitle').value;
+      const submittedType = document.getElementById('submissionType').value;
+      const submittedDate = document.getElementById('dueDate').value;
+      const submittedCourse = document.getElementById('courseSelect').value;
+      const submittedFile = document.getElementById('assignmentFile').files[0];
+
+      alert(`Assignment "${submittedTitle}" submitted successfully by ${currentUser} for Course ${submittedCourse}!`);
+    }
+
+    function updateAssignment() {
+      const updatedTitle = document.getElementById('assignmentTitle').value;
+      const updatedType = document.getElementById('submissionType').value;
+      const updatedDate = document.getElementById('dueDate').value;
+      const updatedCourse = document.getElementById('courseSelect').value;
+      const updatedFile = document.getElementById('assignmentFile').files[0];
+
+      alert(`Assignment "${updatedTitle}" updated successfully by ${currentUser} for Course ${updatedCourse}!`);
+
+      resetForm();
+    }
+
+    function resetForm() {
+      selectedAssignment = null;
+      document.getElementById('formTitle').innerText = 'Submit Assignment';
+      document.getElementById('submitBtn').style.display = 'block';
+      document.getElementById('updateBtn').style.display = 'none';
+      document.getElementById('assignmentForm').reset();
+    }
+
+    function addAssignment() {
+      alert('Feature not implemented in this demo. Teachers can add assignments.');
+    }
+
+    function addCourse() {
+      const newCourseName = prompt('Enter the name of the new course:');
+      if (newCourseName) {
+        const newCourseId = courses.length + 1;
+        courses.push({ id: newCourseId, name: newCourseName });
+        alert(`Course "${newCourseName}" added successfully!`);
+        showCourses();
+      }
+    }
+
+    function logout() {
+      currentUser = undefined;
+      currentRole = undefined;
+      document.getElementById('coursesSection').style.display = 'none';
+      document.getElementById('assignmentsSection').style.display = 'none';
+      document.getElementById('submissionForm').style.display = 'none';
+      resetForm();
+    }
+
+  
+  </script>
+
+<footer class="footer">
+
+  @ 2024  All Rights Reserved
+
+</footer>
+
+<!-- custom js file link  -->
+<script src="script.js"></script>
+
+  
+</body>
+</html>

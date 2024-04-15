@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="style.css">
+
+    <title>Attendance System</title>
+    <style>
+        /* Some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .present, .absent {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+   
+        <section class="flex">
+           
+           <img src="images/logo.png" style="height: 67px;width: 170px;">
+        
+           <form action="search.html" method="post" class="search-form">
+              <input type="text" name="search_box" required placeholder="Search courses..." maxlength="100">
+              <button type="submit" class="fas fa-search"></button>
+           </form>
+     
+           <div class="icons">
+              <div id="menu-btn" class="fas fa-bars"></div>
+              <div id="search-btn" class="fas fa-search"></div>
+              <div id="user-btn" class="fas fa-user"></div>
+              <div id="toggle-btn" class="fas fa-sun"></div>
+           </div>
+     
+           <div class="profile">
+              <img src="images/pic-1.jpg" class="image" alt="">
+              <h3 class="name">Himanshu Garg</h3>
+              <p class="role">Student</p>
+              <a href="profile.html" class="btn">View Profile</a>
+              <div class="flex-btn">
+                 <a href="login.html" class="option-btn">Login</a>
+                 <a href="register.html" class="option-btn">Register</a>
+              </div>
+           </div>
+     
+        </section>
+     
+     </header>
+  
+  
+  <div class="side-bar">
+  
+     <div id="close-btn">
+        <i class="fas fa-times"></i>
+     </div>
+  
+     <div class="profile">
+        <img src="images/pic-1.jpg" class="image" alt="">
+        <h3 class="name">Himanshu Garg</h3>
+        <p class="role">Student</p>
+        <a href="profile.html" class="btn">View Profile</a>
+     </div>
+  
+     <nav class="navbar">
+        <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+        <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+        <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+        <a href="assignment.html"><i class="fas fa-book"></i><span>Assignments</span></a>
+        <a href="result.html"><i class="fas fa-percentage"></i><span>Result Analysis</span></a>
+  
+     </nav>
+  
+  </div>
+  
+
+  
+    <h2>Attendance System</h2>
+    <table id="attendanceTable">
+        <tr>
+            <th>Student Name</th>
+            <th>Attendance</th>
+        </tr>
+        <!-- Table rows will be dynamically added here -->
+    </table>
+    <p>Total Present: <span id="presentCount">0</span></p>
+    <p>Total Absent: <span id="absentCount">0</span></p>
+
+    <script>
+        const students = {}; // Object to store student attendance status
+
+        function addStudent() {
+            const studentName = prompt("Enter student name:");
+            if (studentName) {
+                students[studentName] = 'A';
+                renderAttendanceTable();
+            }
+        }
+
+        function markAttendance(studentName, status) {
+            students[studentName] = status;
+            renderAttendanceTable();
+        }
+
+        function renderAttendanceTable() {
+            const table = document.getElementById('attendanceTable');
+            table.innerHTML = `<tr><th>Student Name</th><th>Attendance</th></tr>`;
+            let presentCount = 0;
+            let absentCount = 0;
+
+            for (const [name, status] of Object.entries(students)) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${name}</td><td class="${status.toLowerCase()}" onclick="markAttendance('${name}', '${status === 'P' ? 'A' : 'P'}')">${status}</td>`;
+                table.appendChild(row);
+                if (status === 'P') {
+                    presentCount++;
+                } else {
+                    absentCount++;
+                }
+            }
+
+            document.getElementById('presentCount').textContent = presentCount;
+            document.getElementById('absentCount').textContent = absentCount;
+        }
+    </script>
+
+    <button onclick="addStudent()">Add Student</button>
+
+    <script>
+        renderAttendanceTable(); // Initial rendering
+    </script>
+</body>
+</html>

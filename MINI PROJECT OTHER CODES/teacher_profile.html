@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>home</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+      
+      <img src="images/logo.png" class="ABC" alt="" style="height: 67px; width: 170px;">
+
+      <form action="search.html" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="Search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="images/pic-1.jpg" class="image" alt="">
+         <h3 class="name">Himanshu Garg</h3>
+         <p class="role">Student</p>
+         <a href="profile.html" class="btn">view profile</a>
+         <div class="flex-btn" style="display: flex; justify-content: center;">
+            <a href="login.html" class="option-btn">login</a>
+            <!-- <a href="register.html" class="option-btn">register</a> -->
+         </div>
+      </div>
+
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="images/pic-1.jpg" class="image" alt="">
+      <h3 class="name">Himanshu Garg</h3>
+      <p class="role">Student</p>
+      <a href="profile.html" class="btn">view profile</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="assignment.html"><i class="fas fa-book"></i><span>Assignments</span></a>
+      <a href="result.html"><i class="fas fa-percentage"></i><span>Result Analysis</span></a>
+   </nav>
+
+</div>
+
+<section class="teacher-profile">
+
+   <h1 class="heading">profile details</h1>
+
+   <div class="details">
+      <div class="tutor">
+         <img src="images/pic-2.jpg" alt="">
+      </div>
+      <div class="flex">
+         <p>Total subjects : <span>4</span></p>
+         <p>Classes teaching : <span>18</span></p>
+         <p>job experience : <span>1208</span></p>
+         <p>total remarks : <span>52</span></p>
+      </div>
+   </div>
+
+</section>
+
+<section class="courses">
+
+   <h1 class="heading">our courses</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/web programming lab.png" alt="">
+         </div>
+         <h3 class="title">Web Programming Laboratory</h3>
+         <a href="playlist.html" class="inline-btn">view </a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/mini project lab.png" alt="">
+         </div>
+         <h3 class="title">Mini Project Laboratory</h3>
+         <a href="playlist.html" class="inline-btn">view </a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/psot images.png" alt="">
+         </div>
+         <h3 class="title">Probability, Statistics and Optimization Techniques</h3>
+         <a href="playlist.html" class="inline-btn">view </a>
+      </div>
+
+      <div class="box">
+         <div class="thumb">
+            <img src="images/aoa.png" alt="">
+         </div>
+         <h3 class="title">Analysis of Algorithm</h3>
+         <a href="playlist.html" class="inline-btn">view</a>
+      </div>
+
+   </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+   @ 2024  All Rights Reserved
+
+</footer>
+
+<!-- custom js file link  -->
+<script src="script.js"></script>
+
+   
+</body>
+</html>
