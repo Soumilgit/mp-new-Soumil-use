@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.titlecontact {
+    background-color: rgba(0,0,0,0.154);
+    color: green;
+    padding: 8px 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    margin: 20px 0;
+}
+
+.contact {
+    position: relative;
+    min-height: 100vh;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-size: cover;
+}
+
+.contact .content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.contact .content h2 {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.contact .content p {
+    font-weight: 300;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+.container .contactInfo {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.container .contactInfo .box {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+    margin-bottom: 20px;
+    
+}
+
+.container .contactInfo .box .icon {
+    min-width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+    background:black;
+    color: white;
+}
+
+.container .contactInfo .box .text {
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    flex-direction: column;
+    font-weight: 300;
+}
+
+.container .contactInfo .box .text h3 {
+    font-weight: 500;
+    /* color: #333; */
+}
+
+.contactus-form {
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    background: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 24px 35px 15px -3px rgba(0,0,0,0.1);
+    border: 1px solid black;
+}
+
+.contactus-form h2 {
+    font-size: 30px;
+    color: black;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.contactus-form .input-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contactus-form .input-box input,
+.contactus-form .input-box textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid hsla(12, 98%, 52%, 0.1);
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.contactus-form .input-box .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactus-form .input-box .submit-button {
+    color: white;
+    background-color: green;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 15px;
+}
+
+
